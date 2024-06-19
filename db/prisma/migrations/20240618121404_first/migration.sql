@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "chatCredit" DROP NOT NULL,
+ALTER COLUMN "musicCredit" DROP NOT NULL,
+ALTER COLUMN "imageCredit" DROP NOT NULL,
+ALTER COLUMN "CodeCredit" DROP NOT NULL;
