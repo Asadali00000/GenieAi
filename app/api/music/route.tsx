@@ -5,7 +5,7 @@ import Replicate from "replicate";
 
 // Initialize Replicate with your API token
 const replicate = new Replicate({ auth: "r8_FzlRf0uKPNnNFVksHytncqPqw5pTslN1uVGG5" });
-export async function GET(request) {
+export async function GET(request:Request) {
 
 	try {
 		const getApiLimit = await fetch("http://localhost:3000/api/api-limit/getApiLimit", {

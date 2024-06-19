@@ -10,7 +10,7 @@ export default function MessageInput() {
 	const setMessageAtomValue=useSetRecoilState(messageAtom);
 	const Message=useRecoilValue(messageAtom);
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e:any) => {
 	  e.preventDefault();
 	  const res = await fetch(`/api/chat?prompt=${encodeURIComponent(prompt)}`);
 
@@ -30,7 +30,7 @@ export default function MessageInput() {
 					className="flex-grow bg-gray-50 p-2 rounded-l-lg focus:outline-none w-full"
 					placeholder="Type your message..."
 					value={prompt}
-					onChange={(e) => setPrompt(e.target.value)}
+					onChange={(e:any) => setPrompt(e.target.value)}
 				/>
 
 

@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth';
 import prismadb from '../../../../db/index';
 import authOptions from '@/app/lib/auth';
 
-export async function GET(request) {
+export async function GET() {
 
 	const session = await getServerSession(authOptions);
 

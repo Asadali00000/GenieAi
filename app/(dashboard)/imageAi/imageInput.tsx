@@ -12,7 +12,7 @@ export default function ImageInput() {
 const [loading ,setImageLoading]=useRecoilState(imageLoading);
 	const setImageAtomValue=useSetRecoilState(imageAtom);
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e:any) => {
 	  e.preventDefault();
 	  setImageLoading(true);
 	  const res = await fetch(`/api/image?prompt=${encodeURIComponent(prompt)}`);
@@ -41,7 +41,7 @@ setImageAtomValue("1")
 									className="flex-grow bg-gray-50 p-2 rounded-l-lg focus:outline-none w-full"
 									placeholder="Type your message..."
 									value={prompt}
-									onChange={(e) => setPrompt(e.target.value)}
+									onChange={(e:any) => setPrompt(e.target.value)}
 								/>
 			{loading ? (
             <Loading/>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { headers } from "next/headers";
 
 // Handle GET requests to /api/generateImage
-export async function GET(request) {
+export async function GET(request:Request) {
   try {
     // Extract text from the request query parameters
 	const url = new URL(request.url, "http://localhost:3000");

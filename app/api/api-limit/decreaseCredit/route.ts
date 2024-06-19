@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
-  const email = session.user?.email;
+  const email = session.user?.email || "";
 	const body=await request.json();
 	const whichAiCredit=body.page;
 

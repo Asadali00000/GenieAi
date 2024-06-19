@@ -6,15 +6,15 @@ const prisma = new PrismaClient();
 
 	providers: [
 		GoogleProvider({
-			clientId: process.env.GOOGLE_CLIENT_ID,
-			clientSecret:process.env.GOOGLE_CLIENT_SECRET
+			clientId: process.env.GOOGLE_CLIENT_ID || "",
+			clientSecret:process.env.GOOGLE_CLIENT_SECRET || ""
 		})
 	],
 	pages:{
   signIn:'../login'
 	},
 	callbacks: {
-		async signIn({ user }) {
+		async signIn({ user }:{user :{email:string | null |  undefined }}):Promise<Boolean> {
 		  // Ensure email is string | undefined
 		  const email = user.email ?? undefined;
 

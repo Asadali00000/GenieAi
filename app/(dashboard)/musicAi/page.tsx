@@ -11,7 +11,7 @@ const MyComponent = () => {
   const [audioSrc, setAudioSrc] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 	const setWhichPage=useSetRecoilState(whichCreditAtom);
 	setWhichPage("Music(in secs)")
   const handleGenerateMusic = async () => {
@@ -31,9 +31,9 @@ const MyComponent = () => {
 
   const handlePlayPause = () => {
     if (isPlaying) {
-      audioRef.current.pause();
+      audioRef.current?.pause();
     } else {
-      audioRef.current.play();
+      audioRef.current?.play();
     }
     setIsPlaying(!isPlaying);
   };
@@ -48,7 +48,7 @@ const MyComponent = () => {
           <input
             type="text"
             value={tone}
-            onChange={(e) => setTone(e.target.value)}
+            onChange={(e:any) => setTone(e.target.value)}
             className="w-full mt-1 p-2 border border-gray-300 rounded"
           />
         </div>
@@ -57,7 +57,7 @@ const MyComponent = () => {
           <input
             type="number"
             value={duration}
-            onChange={(e) => setDuration(Math.max(0,Math.min(8,Number(e.target.value))))}
+            onChange={(e:any) => setDuration(Math.max(0,Math.min(8,Number(e.target.value))))}
             className="w-full mt-1 p-2 border border-gray-300 rounded"
           />
         </div>

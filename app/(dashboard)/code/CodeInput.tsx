@@ -12,7 +12,7 @@ export default function CodeInput() {
 	const Message=useRecoilValue(codeAtom);
 	const [loading , setLoading]=useState(false);
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e:any) => {
 	  e.preventDefault();
 	  setLoading(true);
 	  const res = await fetch(`/api/code?prompt=${encodeURIComponent(prompt)}`);

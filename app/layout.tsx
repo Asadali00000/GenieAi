@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Provider } from "./provider";
 import AuthRedirect from "@/component/authRedirect";
-import useSessionHandler from "./hooks/useSessionHandler";
 
 const inter = Inter({ subsets: ["latin"] });
 

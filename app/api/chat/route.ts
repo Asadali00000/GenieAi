@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-export async function GET(request) {
+export async function GET(request:Request) {
 
 	const getApiLimit = await fetch("http://localhost:3000/api/api-limit/getApiLimit", {
 		method: "GET",
