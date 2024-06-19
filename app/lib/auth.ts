@@ -36,10 +36,16 @@ const prisma = new PrismaClient();
 
 			  }
 			});
+
+
 		  }
 
 		  return true; // Return true to continue the sign-in process
 		},
+		async redirect({ url, baseUrl }:{url:any , baseUrl:any}) {
+			// Perform custom redirect logic if necessary
+			return url.startsWith(baseUrl) ? url : baseUrl;
+		  },
 
 	}
 
