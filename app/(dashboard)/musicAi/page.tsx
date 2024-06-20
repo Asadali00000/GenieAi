@@ -14,6 +14,9 @@ const MyComponent = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 	const setWhichPage=useSetRecoilState(whichCreditAtom);
 	setWhichPage("Music(in secs)")
+
+
+
   const handleGenerateMusic = async () => {
     setLoading(true);
 		setAudioSrc("");

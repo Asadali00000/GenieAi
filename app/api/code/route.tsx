@@ -10,6 +10,10 @@ export async function GET(request: Request) {
     if (!prompt) {
       return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
     }
+
+
+
+
 		const getApiLimit = await fetch("https://genieai-kjs1.onrender.com/api/api-limit/getApiLimit", {
 			method: "GET",
 			headers: headers(),
@@ -19,7 +23,8 @@ export async function GET(request: Request) {
 		const apiCredit = allCredit.credit;
 
 
-		const freeTrial=apiCredit.chatCredit;
+		const freeTrial=apiCredit.CodeCredit;
+
 		if (!freeTrial) {
 
 			return  NextResponse.json({msg:"Free trial has expired."}, { status: 403 });

@@ -1,16 +1,14 @@
 "use client"
 import React, { useState ,useEffect} from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { NextResponse } from 'next/server';
-import ReactMarkdown from 'react-markdown'
-import { imageAtom, whichCreditAtom } from '@/context/atom';
+import { imageAtom, messageAtom, whichCreditAtom } from '@/context/atom';
 import ImageInput from './imageInput';
 import Image from 'next/image';
 
 const MessageSender = () => {
 
    const [message,setMessage]=useState("");
-   const messageAtomValue=useRecoilValue(imageAtom);
+   const messageAtomValue=useRecoilValue(messageAtom);
    const setWhichPage=useSetRecoilState(whichCreditAtom);
    setWhichPage("Image")
     useEffect(()=>{

@@ -1,21 +1,22 @@
 "use client"
 import { messageAtom } from "@/context/atom";
-import { NextResponse } from "next/server";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 export default function MessageInput() {
 	const [prompt, setPrompt] = useState("");
-	const [response, setResponse] = useState("");
-	const setMessageAtomValue=useSetRecoilState(messageAtom);
-	const Message=useRecoilValue(messageAtom);
+	const setTone=useSetRecoilState(messageAtom);
 
+
+	useEffect(()=>{
+		setTone("");
+	  },[])
 	const handleSubmit = async (e:any) => {
 	  e.preventDefault();
 	  const res = await fetch(`/api/chat?prompt=${encodeURIComponent(prompt)}`);
 
 	  const data = await res.json();
-	  setMessageAtomValue( data.msg || data.error || "Unknown error occurred");
+	  setTone( data.msg || data.error || "Unknown error occurred");
 
 
 

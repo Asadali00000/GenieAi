@@ -1,8 +1,8 @@
 "use client"
-import { imageAtom, imageLoading } from "@/context/atom";
+import { imageAtom, imageLoading, messageAtom } from "@/context/atom";
 import Loading from "@/ui/loading";
 import { NextResponse } from "next/server";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 export default function ImageInput() {
@@ -10,7 +10,12 @@ export default function ImageInput() {
 	const [response, setResponse] = useState("");
 	const imageMessage=useRecoilValue(imageAtom);
 const [loading ,setImageLoading]=useRecoilState(imageLoading);
-	const setImageAtomValue=useSetRecoilState(imageAtom);
+	const setImage=useSetRecoilState(messageAtom);
+
+
+	useEffect(()=>{
+		setImage("");
+	  },[])
 
 	const handleSubmit = async (e:any) => {
 	  e.preventDefault();
@@ -21,10 +26,10 @@ const [loading ,setImageLoading]=useRecoilState(imageLoading);
 	  const data = await res.json();
 	  setImageLoading(false);
 	  if(!res.ok){
-setImageAtomValue("1")
+setImage("1")
 	  }else{
 
-		  setImageAtomValue( data.replicate.items[0].image || data.error || "Unknown error occurred");
+		  setImage( data.replicate.items[0].image || data.error || "Unknown error occurred");
 		}
 
 

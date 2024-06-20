@@ -1,14 +1,15 @@
 "use client"
 
 
-import { authUserAtom, creditAtom, messageAtom, whichCreditAtom } from '@/context/atom';
+import { authUserAtom, codeAtom, creditAtom, messageAtom, whichCreditAtom } from '@/context/atom';
 import React, { useEffect } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 const NavBar: React.FC = () => {
 
-	const whichPage = useRecoilValue(whichCreditAtom);
-const [message,setMessage]=useRecoilState(messageAtom);
+	const [whichPage, setWhichPage] = useRecoilState(whichCreditAtom);
+	const [message, setMessage] = useRecoilState(messageAtom);
+	const codeMessage=useRecoilValue(codeAtom);
 	const credit = useRecoilValue(creditAtom);
 	const setCredit = useSetRecoilState(creditAtom);
 	useEffect(() => {
@@ -16,22 +17,22 @@ const [message,setMessage]=useRecoilState(messageAtom);
 			try {
 				const response = await fetch('https://genieai-kjs1.onrender.com/api/api-limit/getApiLimit');
 				const data = await response.json();
-			     const apiCredit= data.credit;
+				const apiCredit = data.credit;
 
 
-				  if(whichPage=='Message'){
-					  setCredit(apiCredit.chatCredit);
+				if (whichPage == 'Message') {
+					setCredit(apiCredit.chatCredit);
 
-					}else if(whichPage=='Code Credit'){
-						setCredit(apiCredit.CodeCredit);
+				} else if (whichPage == 'Code Credit') {
+					setCredit(apiCredit.CodeCredit);
 
-					}else if(whichPage=='Image'){
-						setCredit(apiCredit.imageCredit);
+				} else if (whichPage == 'Image') {
+					setCredit(apiCredit.imageCredit);
 
-					}else{
-						setCredit(apiCredit.musicCredit);
+				} else {
+					setCredit(apiCredit.musicCredit);
 
-					}
+				}
 
 			} catch (error) {
 				// console.log(error)
@@ -40,7 +41,7 @@ const [message,setMessage]=useRecoilState(messageAtom);
 		};
 
 		fetchData();
-	}, [whichPage, setCredit,setMessage, message]);
+	}, [whichPage, setCredit, setMessage, message]);
 
 
 

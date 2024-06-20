@@ -10,7 +10,6 @@ export async function GET() {
 
 
 
-	console.log("inside get api limit ")
   const email = session?.user?.email || '';
   const user = await prismadb.user.findUnique({
     where: {

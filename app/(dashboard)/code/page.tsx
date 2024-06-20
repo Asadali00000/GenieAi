@@ -1,25 +1,26 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { codeAtom, whichCreditAtom } from '@/context/atom';
+import { codeAtom, messageAtom, whichCreditAtom } from '@/context/atom';
 import { vs } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Import the 'vs' theme
 import CodeInput from './CodeInput';
 
 
 
 const CodeSender = () => {
-	const messageAtomValue = useRecoilValue(codeAtom);
-	const [message, setMessage] = useState("");
+	const messageAtomValue = useRecoilValue(messageAtom);
 	const setWhichPage = useSetRecoilState(whichCreditAtom);
-	setWhichPage("Code Credit")
-	useEffect(() => {
-		if (messageAtomValue) {
-			const codeWithoutBackticks = messageAtomValue.substring(2, messageAtomValue.length - 2);
-			setMessage(codeWithoutBackticks);
-		}
 
-	}, [messageAtomValue]);
+	setWhichPage("Code Credit")
+
+	// useEffect(() => {
+	// 	if (messageAtomValue) {
+	// 		const codeWithoutBackticks = messageAtomValue.substring(2, messageAtomValue.length - 2);
+	// 		setMessage(codeWithoutBackticks);
+	// 	}
+
+	// }, [messageAtomValue]);
 
 
 	const handleCopy = () => {
