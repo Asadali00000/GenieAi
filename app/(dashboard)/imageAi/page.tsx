@@ -12,7 +12,7 @@ const MessageSender = () => {
    const [message,setMessage]=useState("");
    const messageAtomValue=useRecoilValue(imageAtom);
    const setWhichPage=useSetRecoilState(whichCreditAtom);
-   setWhichPage("Images")
+   setWhichPage("Image")
     useEffect(()=>{
 setMessage(messageAtomValue);
 
