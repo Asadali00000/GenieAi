@@ -14,7 +14,7 @@ const [message,setMessage]=useRecoilState(messageAtom);
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch('/api/api-limit/getApiLimit');
+				const response = await fetch('https://genieai-kjs1.onrender.com//api/api-limit/getApiLimit');
 				const data = await response.json();
 			     const apiCredit= data.credit;
 
