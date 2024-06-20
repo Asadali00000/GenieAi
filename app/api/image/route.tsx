@@ -6,13 +6,13 @@ import { headers } from "next/headers";
 export async function GET(request:Request) {
   try {
     // Extract text from the request query parameters
-	const url = new URL(request.url, "http://localhost:3000");
+	const url = new URL(request.url, "https://genieai-kjs1.onrender.com");
     const text = url.searchParams.get('prompt');
 
     if (!text) {
       return NextResponse.json({ error: "Text prompt is required" }, { status: 400 });
     }
-		const getApiLimit = await fetch("http://localhost:3000/api/api-limit/getApiLimit", {
+		const getApiLimit = await fetch("https://genieai-kjs1.onrender.com/api/api-limit/getApiLimit", {
 			method: "GET",
 			headers: headers(),
 
@@ -46,7 +46,7 @@ export async function GET(request:Request) {
 			page:"imageCredit"
 					}
 
-					await fetch("http://localhost:3000/api/api-limit/decreaseCredit", {
+					await fetch("https://genieai-kjs1.onrender.com/api/api-limit/decreaseCredit", {
 						method: "POST",
 						headers: headers(),
 						body:JSON.stringify(data)

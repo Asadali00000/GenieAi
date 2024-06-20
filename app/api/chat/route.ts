@@ -5,7 +5,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 export async function GET(request:Request) {
 
-	const getApiLimit = await fetch("http://localhost:3000/api/api-limit/getApiLimit", {
+	const getApiLimit = await fetch("https://genieai-kjs1.onrender.com/api/api-limit/getApiLimit", {
 		method: "GET",
 		headers: headers(),
 
@@ -27,7 +27,7 @@ export async function GET(request:Request) {
 	try {
 
 
-		const url = new URL(request.url, "http://localhost:3000");
+		const url = new URL(request.url, "https://genieai-kjs1.onrender.com");
 		const prompt = url.searchParams.get('prompt');
 		if (!prompt) {
 			return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
@@ -49,7 +49,7 @@ export async function GET(request:Request) {
 			page: "chatCredit"
 		}
 
-		await fetch("http://localhost:3000/api/api-limit/decreaseCredit", {
+		await fetch("https://genieai-kjs1.onrender.com/api/api-limit/decreaseCredit", {
 			method: "POST",
 			headers: headers(),
 			body: JSON.stringify(data)

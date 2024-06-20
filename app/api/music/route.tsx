@@ -8,7 +8,7 @@ const replicate = new Replicate({ auth: "r8_FzlRf0uKPNnNFVksHytncqPqw5pTslN1uVGG
 export async function GET(request:Request) {
 
 	try {
-		const getApiLimit = await fetch("http://localhost:3000/api/api-limit/getApiLimit", {
+		const getApiLimit = await fetch("https://genieai-kjs1.onrender.com/api/api-limit/getApiLimit", {
 			method: "GET",
 			headers: headers(),
 
@@ -22,7 +22,7 @@ export async function GET(request:Request) {
 
 			return  NextResponse.json({msg:"Free trial has expired."}, { status: 403 });
 		}
-		const url = new URL(request.url, "http://localhost:3000");
+		const url = new URL(request.url, "https://genieai-kjs1.onrender.com");
 		const tone = url.searchParams.get('tone');
 		const duration = url.searchParams.get('duration');
 
@@ -41,7 +41,7 @@ export async function GET(request:Request) {
 			page: "musicCredit"
 		}
 
-		await fetch("http://localhost:3000/api/api-limit/decreaseCredit", {
+		await fetch("https://genieai-kjs1.onrender.com/api/api-limit/decreaseCredit", {
 			method: "POST",
 			headers: headers(),
 			body: JSON.stringify(data)
